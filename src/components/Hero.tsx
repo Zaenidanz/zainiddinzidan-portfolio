@@ -15,6 +15,14 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-20 pb-32">
+      {/* Background Grid */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="h-full w-full bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        
+        {/* Radial fade (lebih halus, tidak menutup total) */}
+        <div className="absolute inset-0 bg-black/60 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_90%)]" />
+      </div>
+
       {/* Top Marquee (Moves Left) */}
       <div className="absolute top-[20%] w-[120%] flex whitespace-nowrap opacity-20 rotate-[-2deg] pointer-events-none">
         <motion.div
