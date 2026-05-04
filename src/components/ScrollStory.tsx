@@ -15,17 +15,13 @@ export default function ScrollStory() {
   const words = text.split(" ");
 
   return (
-    <section id="about" className="relative h-[350vh] min-h-[3000px] w-full bg-black">
-      {/* Invisible absolute track so Framer Motion measures exactly this container's dimensions without sticky interference */}
-      <div ref={container} className="absolute inset-0 w-full h-full pointer-events-none" />
-      
-      <div className="sticky top-0 h-[100vh] w-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 overflow-hidden">
+    <section ref={container} id="about" className="relative w-full bg-black h-[2500px] md:h-[300vh]">
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 overflow-hidden">
         <div className="max-w-[1100px] text-center w-full">
           <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold leading-snug md:leading-tight tracking-tight flex flex-wrap justify-center gap-x-1.5 gap-y-1 md:gap-x-3 md:gap-y-2">
             {words.map((word, i) => {
-              // 30% safe zone means the first 30% and last 30% of scrolling does nothing.
-              // With h-[350vh], 30% is over 100vh. It's impossible to start before sticking or unstick before finishing.
-              const safeZone = 0.30;
+              // 25% safe zone
+              const safeZone = 0.25;
               const range = 1 - safeZone * 2;
               
               const start = safeZone + (i / words.length) * range;
