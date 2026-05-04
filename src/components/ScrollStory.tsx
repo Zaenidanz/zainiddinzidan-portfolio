@@ -16,7 +16,10 @@ export default function ScrollStory() {
 
   return (
     <section ref={container} id="about" className="relative w-full bg-black h-[2500px] md:h-[300vh]">
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 overflow-hidden">
+      <div 
+        className="sticky w-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-8"
+        style={{ top: "30svh" }}
+      >
         <div className="max-w-[1100px] text-center w-full">
           <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold leading-snug md:leading-tight tracking-tight flex flex-wrap justify-center gap-x-1.5 gap-y-1 md:gap-x-3 md:gap-y-2">
             {words.map((word, i) => {
