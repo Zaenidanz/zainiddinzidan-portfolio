@@ -15,13 +15,18 @@ export default function ScrollStory() {
   const words = text.split(" ");
 
   return (
-    <section ref={container} className="relative h-[250vh] w-full bg-black" id="about">
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-4 md:px-8">
+    <section ref={container} className="relative h-[250dvh] w-full bg-black" id="about">
+      <div className="sticky top-0 h-[100dvh] w-full flex flex-col items-center justify-center px-4 md:px-8">
         <div className="max-w-[1100px] text-center">
           <p className="text-2xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight flex flex-wrap justify-center gap-x-2 gap-y-1 md:gap-x-3 md:gap-y-2">
             {words.map((word, i) => {
-              const start = i / words.length;
-              const end = start + 1 / words.length;
+              // Add a 15% scroll buffer at start and end to prevent mobile address bar glitches
+              const buffer = 0.15;
+              const range = 1 - buffer * 2;
+              
+              const start = buffer + (i / words.length) * range;
+              const end = start + (1 / words.length) * range;
+              
               // eslint-disable-next-line react-hooks/rules-of-hooks
               const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
               return (
