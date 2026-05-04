@@ -11,13 +11,13 @@ export default function ScrollStory() {
   });
 
   const text =
-    "I primarily focus on web development, with a passion for building clean, intuitive, and visually engaging digital experiences. I enjoy not just creating things that look good, but also understanding how they work behind the scenes. From experimenting with new technologies to refining small details in UI and performance, I'm always looking for ways to improve and learn. For me, development isn't just about writing code, it's about solving problems, exploring ideas, and turning them into something real.";
+    "I primarily focus on Web Development. I love creating intuitive and visually appealing stuff like this.";
   const words = text.split(" ");
 
   return (
-    <section ref={container} className="relative py-40 h-[200vh] min-h-screen flex items-start justify-center bg-black" id="about">
-      <div className="max-w-[1100px] px-6 mx-auto text-center sticky top-[20vh] md:top-[25vh]">
-        <p className="text-2xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight flex flex-wrap justify-center gap-x-2 gap-y-1 md:gap-x-3 md:gap-y-2">
+    <section ref={container} className="relative py-40 min-h-screen flex items-center justify-center bg-black" id="about">
+      <div className="max-w-[1000px] px-6 mx-auto text-center sticky top-1/3">
+        <p className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight flex flex-wrap justify-center gap-x-3 gap-y-2 md:gap-x-4 md:gap-y-4">
           {words.map((word, i) => {
             const start = i / words.length;
             const end = start + 1 / words.length;
@@ -34,3 +34,4 @@ export default function ScrollStory() {
     </section>
   );
 }
+
