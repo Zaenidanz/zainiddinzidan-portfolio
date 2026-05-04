@@ -7,7 +7,7 @@ export default function ScrollStory() {
   const container = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start start", "end end"],
+    offset: ["start 0.8", "start 0.2"],
   });
 
   const text =
@@ -15,31 +15,21 @@ export default function ScrollStory() {
   const words = text.split(" ");
 
   return (
-    <section ref={container} id="about" className="relative w-full bg-black h-[2500px] md:h-[300vh]">
-      <div 
-        className="sticky w-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-8"
-        style={{ top: "30svh" }}
-      >
-        <div className="max-w-[1100px] text-center w-full">
-          <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold leading-snug md:leading-tight tracking-tight flex flex-wrap justify-center gap-x-1.5 gap-y-1 md:gap-x-3 md:gap-y-2">
-            {words.map((word, i) => {
-              // 25% safe zone
-              const safeZone = 0.25;
-              const range = 1 - safeZone * 2;
-              
-              const start = safeZone + (i / words.length) * range;
-              const end = start + (1 / words.length) * range;
-              
-              // eslint-disable-next-line react-hooks/rules-of-hooks
-              const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
-              return (
-                <motion.span key={i} style={{ opacity }} className="text-white">
-                  {word}
-                </motion.span>
-              );
-            })}
-          </p>
-        </div>
+    <section ref={container} className="relative py-40 h-[200vh] min-h-screen flex items-start justify-center bg-black" id="about">
+      <div className="max-w-[1100px] px-6 mx-auto text-center sticky top-[20vh] md:top-[25vh]">
+        <p className="text-2xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight flex flex-wrap justify-center gap-x-2 gap-y-1 md:gap-x-3 md:gap-y-2">
+          {words.map((word, i) => {
+            const start = i / words.length;
+            const end = start + 1 / words.length;
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            const opacity = useTransform(scrollYProgress, [start, end], [0.2, 1]);
+            return (
+              <motion.span key={i} style={{ opacity }} className="text-white">
+                {word}
+              </motion.span>
+            );
+          })}
+        </p>
       </div>
     </section>
   );
