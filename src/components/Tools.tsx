@@ -2,17 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const tools = [
-  "Tailwind",
-  "AstroJS",
-  "ElysiaJS",
-  "Bun",
-  "HTML",
-  "CSS",
-  "VSCode",
-  "Python",
-  "NextJS",
-];
+import { tools } from "../data/tools";
 
 export default function Tools() {
   const repeatedTools = [...tools, ...tools, ...tools]; // Repeat for seamless loop
@@ -27,7 +17,7 @@ export default function Tools() {
 
       <div className="relative flex whitespace-nowrap overflow-hidden group">
         <motion.div
-          className="flex space-x-12 md:space-x-24 px-12 md:px-24"
+          className="flex space-x-16 md:space-x-32 px-16 md:px-32 items-center"
           animate={{ x: ["0%", "-33.33%"] }}
           transition={{
             repeat: Infinity,
@@ -40,11 +30,13 @@ export default function Tools() {
           {repeatedTools.map((tool, index) => (
             <div
               key={index}
-              className="group/item flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+              title={tool.name}
+              className="group/item flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
             >
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter opacity-50 group-hover/item:opacity-100 transition-opacity">
-                {tool}
-              </span>
+              <div 
+                className="w-16 h-16 md:w-24 md:h-24 [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain"
+                dangerouslySetInnerHTML={{ __html: tool.svg }}
+              />
             </div>
           ))}
         </motion.div>
