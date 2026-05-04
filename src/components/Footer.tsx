@@ -29,6 +29,7 @@ export default function Footer() {
             <div className="flex flex-col space-y-3 text-secondary text-sm md:items-end">
               <a href="https://github.com/Zaenidanz" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">GitHub</a>
               <a href="https://www.linkedin.com/in/zainiddin-zidan-637457336" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">LinkedIn</a>
+              <a href="https://www.instagram.com/zainz_danz" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors w-fit">Instagram</a>
             </div>
           </div>
         </div>
