@@ -11,6 +11,9 @@ import Works from "@/components/Works";
 import Quote from "@/components/Quote";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import dynamic from "next/dynamic";
+
+const Lanyard = dynamic(() => import("@/components/Lanyard"), { ssr: false });
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -34,6 +37,9 @@ export default function Home() {
       <Works />
       <Quote />
       <Contact />
+      <section className="flex justify-center items-center bg-black">
+        <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]} />
+      </section>
       <Footer />
     </div>
   );
